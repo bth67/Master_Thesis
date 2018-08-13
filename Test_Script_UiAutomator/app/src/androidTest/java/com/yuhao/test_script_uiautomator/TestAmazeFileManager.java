@@ -106,7 +106,7 @@ public class TestAmazeFileManager {
     }
 
     //Test case 3
-    @Test
-    public void 
+    //@Test
+    //public void
 }
 
