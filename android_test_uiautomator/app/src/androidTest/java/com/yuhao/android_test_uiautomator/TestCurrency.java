@@ -76,4 +76,40 @@ public class TestCurrency {
         mDevice.findObject(new UiSelector().text("SEK")).click();
     }
 
+    //Test case 2
+    @Test
+    public void InputAmount() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/edit")).click();
+        mDevice.pressKeyCode(KeyEvent.KEYCODE_1);
+        mDevice.pressKeyCode(KeyEvent.KEYCODE_2);
+        mDevice.pressKeyCode(KeyEvent.KEYCODE_3);
+    }
+
+    //Test case 3
+    @Test
+    public void EditCurrency() throws UiObjectNotFoundException {
+        UiObject obj = mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/list")).getChild(new UiSelector().className("android.widget.LinearLayout").index(2));
+        longClickUiObject(obj);
+        mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/list")).getChild(new UiSelector().className("android.widget.LinearLayout").index(3)).click();
+        mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/action_remove")).click();
+    }
+
+    public void longClickUiObject(UiObject obj) throws UiObjectNotFoundException {
+        int x = obj.getBounds().centerX();
+        int y = obj.getBounds().centerY();
+        mDevice.swipe(x, y, x, y, 200);
+    }
+
+    //Test case 4
+    @Test
+    public void SeeExchangeRateChart() throws UiObjectNotFoundException {
+        UiObject obj = mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/list")).getChild(new UiSelector().className("android.widget.LinearLayout").index(2));
+        longClickUiObject(obj);
+        mDevice.findObject(new UiSelector().descriptionContains("More options")).click();
+        mDevice.findObject(new UiSelector().text("Chart")).click();
+        //convert
+        mDevice.findObject(new UiSelector().resourceId("org.billthefarmer.currency:id/action_invert")).click();
+        //back
+        mDevice.findObject(new UiSelector().description("Navigate up")).click();
+    }
 }

@@ -66,9 +66,9 @@ public class TestAmazeFileManager {
                 LAUNCH_TIMEOUT);
     }
 
-    //Test case 1
+    //NewFolder
     @Test
-    public void NewFolder() throws UiObjectNotFoundException {
+    public void Test1() throws UiObjectNotFoundException {
         //Press new button
         UiObject NewBtn=mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/fab_expand_menu_button"));
         NewBtn.click();
@@ -84,9 +84,9 @@ public class TestAmazeFileManager {
         CreateBtn.click();
     }
 
-    //Test case 2
+    //NewFile
     @Test
-    public void NewFile() throws UiObjectNotFoundException {
+    public void Test2() throws UiObjectNotFoundException {
         //Press new button
         UiObject NewBtn=mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/fab_expand_menu_button"));
         NewBtn.click();
@@ -104,9 +104,9 @@ public class TestAmazeFileManager {
         CreateBtn.click();
     }
 
-    //Test case 3
+    //ChangeTheme
     @Test
-    public void ChangeTheme() throws UiObjectNotFoundException {
+    public void Test3() throws UiObjectNotFoundException {
         UiObject act=mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/action_bar"));
         act.getChild(new UiSelector().className("android.widget.ImageButton")).click();
         UiScrollable sc=new UiScrollable(new UiSelector().resourceId("com.amaze.filemanager:id/design_navigation_view"));
@@ -118,9 +118,9 @@ public class TestAmazeFileManager {
         tool.getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 4
+    //ChangColor
     @Test
-    public void ChangColor() throws UiObjectNotFoundException {
+    public void Test4() throws UiObjectNotFoundException {
         UiObject act=mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/action_bar"));
         act.getChild(new UiSelector().className("android.widget.ImageButton")).click();
         UiScrollable sc=new UiScrollable(new UiSelector().resourceId("com.amaze.filemanager:id/design_navigation_view"));
@@ -137,32 +137,32 @@ public class TestAmazeFileManager {
         tool.getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 5
+    //Search
     @Test
-    public void Search() throws UiObjectNotFoundException {
+    public void Test5() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/search")).click();
-        mDevice.pressKeyCode(KeyEvent.KEYCODE_P );
-        mDevice.pressKeyCode(KeyEvent.KEYCODE_L);
+        mDevice.pressKeyCode(KeyEvent.KEYCODE_T);
         mDevice.pressKeyCode(KeyEvent.KEYCODE_E);
-        mDevice.pressKeyCode(KeyEvent.KEYCODE_A);
         mDevice.pressKeyCode(KeyEvent.KEYCODE_S);
-        mDevice.pressKeyCode(KeyEvent.KEYCODE_E);
+        mDevice.pressKeyCode(KeyEvent.KEYCODE_T);
         mDevice.pressKeyCode(KeyEvent.KEYCODE_SEARCH);
-        mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/img_view_back"));
+        mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/img_view_back")).click();
     }
 
-    //Test case 6
+    //OpenFile
     @Test
-    public void OpenFile() throws UiObjectNotFoundException {
-        mDevice.findObject(new UiSelector().text("DCIM")).click();
-        mDevice.findObject(new UiSelector().text("Restored")).click();
-        mDevice.findObject(new UiSelector().text("IMG_0146.JPG")).click();
+    public void Test6() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/home")).click();
+        mDevice.findObject(new UiSelector().text("Download")).click();
+        mDevice.findObject(new UiSelector().textContains("IMG")).click();
         mDevice.pressBack();
     }
 
-    //Test case 7
+    //AddToBookmark
     @Test
-    public void AddToBookmark() throws UiObjectNotFoundException {
+    public void Test7() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/home")).click();
+
         mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/properties")).click();
         mDevice.findObject(new UiSelector().text("Add to Bookmark")).click();
     }

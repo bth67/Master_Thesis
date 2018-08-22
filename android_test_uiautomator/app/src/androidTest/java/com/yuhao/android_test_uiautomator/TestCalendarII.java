@@ -66,9 +66,9 @@ public class TestCalendarII {
                 LAUNCH_TIMEOUT);
     }
 
-    //Test case 1
+    //addEvents
     @Test
-    public void addEvents() throws UiObjectNotFoundException {
+    public void Test1() throws UiObjectNotFoundException {
         for (int i = 0; i < 2; i++) {
             addOneEvent();
         }
@@ -92,52 +92,9 @@ public class TestCalendarII {
         }
     }
 
-    //Test case 2
+    //editEvent
     @Test
-    public void deleteCrossed() throws UiObjectNotFoundException {
-        addOneEvent();
-        viewEvents();
-        crossedOutOneEvent(50, 365);
-        clickDeleteButton();
-
-        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/rb_comp")).click();
-        longClickUiObjectByResourceId(PACKAGE_NAME + ":id/cpb");
-    }
-
-    public void crossedOutOneEvent(int x, int y) throws UiObjectNotFoundException {
-        int endX = x + 800;
-        mDevice.swipe(x, y, endX, y, 10);
-    }
-
-    //Test case 3
-    @Test
-    public void deleteAll() throws UiObjectNotFoundException {
-        addOneEvent();
-        viewEvents();
-        clickDeleteButton();
-
-        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/rb_all")).click();
-        longClickUiObjectByResourceId(PACKAGE_NAME + ":id/cpb");
-    }
-
-    public void viewEvents() throws UiObjectNotFoundException {
-        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/menu_all_event")).click();
-    }
-
-    public void clickDeleteButton() throws UiObjectNotFoundException {
-        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/ib_delete_all")).click();
-    }
-
-    public void longClickUiObjectByResourceId(String id) throws UiObjectNotFoundException {
-        int x = mDevice.findObject(new UiSelector().resourceId(id)).getBounds().centerX();
-        int y = mDevice.findObject(new UiSelector().resourceId(id)).getBounds().centerY();
-        mDevice.swipe(x, y, x, y, 300);
-    }
-
-    //Test case 4
-    @Test
-    public void editEvent() throws UiObjectNotFoundException {
-        addOneEvent();
+    public void Test2() throws UiObjectNotFoundException {
         viewEvents();
         viewDetail();
 
@@ -155,13 +112,66 @@ public class TestCalendarII {
         mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/ib_done")).click();
     }
 
+    //deleteCrossed
+    @Test
+    public void Test3() throws UiObjectNotFoundException {
+        viewEvents();
+        crossedOutOneEvent(50, 365);
+        clickDeleteButton();
+
+        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/rb_comp")).click();
+        longClickUiObjectByResourceId(PACKAGE_NAME + ":id/cpb");
+    }
+
+    public void crossedOutOneEvent(int x, int y) throws UiObjectNotFoundException {
+        int endX = x + 800;
+        mDevice.swipe(x, y, endX, y, 10);
+    }
+
+    //deleteAll
+    @Test
+    public void Test4() throws UiObjectNotFoundException {
+        viewEvents();
+        clickDeleteButton();
+
+        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/rb_all")).click();
+        longClickUiObjectByResourceId(PACKAGE_NAME + ":id/cpb");
+        mDevice.pressBack();
+    }
+
+    public void viewEvents() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/menu_all_event")).click();
+    }
+
+    public void clickDeleteButton() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/ib_delete_all")).click();
+    }
+
+    public void longClickUiObjectByResourceId(String id) throws UiObjectNotFoundException {
+        int x = mDevice.findObject(new UiSelector().resourceId(id)).getBounds().centerX();
+        int y = mDevice.findObject(new UiSelector().resourceId(id)).getBounds().centerY();
+        mDevice.swipe(x, y, x, y, 300);
+    }
+
     public void viewDetail() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId(PACKAGE_NAME + ":id/ib_down")).click();
     }
 
-    //Test case 5
+    //jumpTo
     @Test
-    public void backToToday() throws UiObjectNotFoundException {
+    public void Test5() throws UiObjectNotFoundException {
+        mDevice.pressMenu();
+        mDevice.findObject(new UiSelector().textContains("跳转到指定日期")).click();
+        UiObject detePicker = mDevice.findObject(new UiSelector().resourceId("top.soyask.calendarii:id/ll"));
+        detePicker.getChild(new UiSelector().className("android.widget.NumberPicker").index(0)).swipeDown(5);
+        detePicker.getChild(new UiSelector().className("android.widget.NumberPicker").index(1)).swipeUp(10);
+        detePicker.getChild(new UiSelector().className("android.widget.NumberPicker").index(2)).swipeDown(15);
+        mDevice.findObject(new UiSelector().resourceId("top.soyask.calendarii:id/btn_confirm")).click();
+    }
+
+    //backToToday
+    @Test
+    public void Test6() throws UiObjectNotFoundException {
         for (int i = 0; i < 5; i++) {
             switchToNextMonth();
         }
@@ -174,33 +184,13 @@ public class TestCalendarII {
         mDevice.findObject(new UiSelector().resourceId(id)).swipeLeft(10);
     }
 
-    //Test case 6
+    //jumpTo
     @Test
-    public void jumpTo() throws UiObjectNotFoundException {
+    public void Test7() throws UiObjectNotFoundException {
         mDevice.pressMenu();
-        mDevice.findObject(new UiSelector().textContains("跳转到指定日期")).click();
-        UiObject detePicker = mDevice.findObject(new UiSelector().resourceId("top.soyask.calendarii:id/ll"));
-        detePicker.getChild(new UiSelector().index(0)).swipeDown(5);
-        detePicker.getChild(new UiSelector().index(1)).swipeUp(10);
-        detePicker.getChild(new UiSelector().index(2)).swipeDown(15);
-        mDevice.findObject(new UiSelector().resourceId("top.soyask.calendarii:id/btn_confirm")).click();
-    }
-
-    //Test case 7
-    @Test
-    public void ChangeTheme() throws UiObjectNotFoundException {
-        mDevice.pressMenu();
-        mDevice.findObject(new UiSelector().textContains("设置")).click();
+        mDevice.findObject(new UiSelector().textContains("个性化")).click();
         mDevice.findObject(new UiSelector().textContains("主题风格")).click();
         mDevice.findObject(new UiSelector().textContains("哔哩粉")).click();
-    }
-
-    //Test case 8
-    @Test
-    public void SyncHoliday() throws UiObjectNotFoundException {
-        mDevice.pressMenu();
-        mDevice.findObject(new UiSelector().textContains("设置")).click();
-        mDevice.findObject(new UiSelector().textContains("节假日同步")).click();
     }
 }
 

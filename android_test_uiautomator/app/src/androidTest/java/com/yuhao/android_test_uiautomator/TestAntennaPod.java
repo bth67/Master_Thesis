@@ -66,9 +66,9 @@ public class TestAntennaPod {
                 LAUNCH_TIMEOUT);
     }
 
-    //Test case 1
+    //addEvents
     @Test
-    public void addEvents() throws UiObjectNotFoundException {
+    public void Test1() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().text("Add Podcast")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butBrowseGpoddernet")).click();
@@ -78,9 +78,9 @@ public class TestAntennaPod {
         mDevice.findObject(new UiSelector().text("OPEN PODCAST")).click();
     }
 
-    //Test case 2
+    //AddToQueue
     @Test
-    public void AddToQueue() throws UiObjectNotFoundException {
+    public void Test2() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/nav_list")).getChild(new UiSelector().className("android.widget.RelativeLayout").index(7)).click();
         mDevice.findObject(new UiSelector().className("android.widget.ListView")).getChild(new UiSelector().className("android.widget.LinearLayout").index(1)).click();
@@ -91,34 +91,34 @@ public class TestAntennaPod {
         mDevice.findObject(new UiSelector().text("Queue")).click();
     }
 
-    //Test case 3
+    //StreamEpisode
     @Test
-    public void StreamEpisode() throws UiObjectNotFoundException {
+    public void Test3() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/recyclerView")).getChild(new UiSelector().className("android.widget.FrameLayout").index(1)).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butAction2")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 4
+    //DownloadEpisode
     @Test
-    public void DownloadEpisode() throws UiObjectNotFoundException {
+    public void Test4() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/recyclerView")).getChild(new UiSelector().className("android.widget.FrameLayout").index(1)).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butAction1")).click();
         mDevice.findObject(new UiSelector().textContains("Delete")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 5
+    //ClearQueue
     @Test
-    public void ClearQueue() throws UiObjectNotFoundException {
+    public void Test5() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().className("android.support.v7.widget.LinearLayoutCompat")).getChild(new UiSelector().className("android.widget.ImageView")).click();
         mDevice.findObject(new UiSelector().text("Clear Queue")).click();
         mDevice.findObject(new UiSelector().text("CONFIRM")).click();
     }
 
-    //Test case 6
+    //ChangeTheme
     @Test
-    public void ChangeTheme() throws UiObjectNotFoundException {
+    public void Test6() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().text("Settings")).click();
         mDevice.findObject(new UiSelector().text("User Interface")).click();
@@ -126,18 +126,18 @@ public class TestAntennaPod {
         mDevice.findObject(new UiSelector().text("Dark")).click();
     }
 
-    //Test case 7
+    //CheckDownloads
     @Test
-    public void CheckDownloads() throws UiObjectNotFoundException {
+    public void Test7() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().text("Downloads")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/viewpager")).swipeLeft(10);
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/viewpager")).swipeLeft(10);
     }
 
-    //Test case 8
+    //PlayNPause
     @Test
-    public void PlayNPause() throws UiObjectNotFoundException {
+    public void Test8() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/recyclerView")).getChild(new UiSelector().className("android.widget.FrameLayout").index(0)).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butAction2")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butFF")).click();
@@ -146,9 +146,9 @@ public class TestAntennaPod {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/toolbar")).getChild(new UiSelector().className("android.widget.ImageButton")).click();
     }
 
-    //Test case 9
+    //AdjustSpeed
     @Test
-    public void AdjustSpeed() throws UiObjectNotFoundException {
+    public void Test9() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/recyclerView")).getChild(new UiSelector().className("android.widget.FrameLayout").index(0)).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butAction2")).click();
         mDevice.findObject(new UiSelector().resourceId("de.danoeh.antennapod.debug:id/butPlaybackSpeed")).click();

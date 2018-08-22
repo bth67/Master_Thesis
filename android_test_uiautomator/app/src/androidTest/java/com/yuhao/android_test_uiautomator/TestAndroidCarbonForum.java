@@ -66,18 +66,18 @@ public class TestAndroidCarbonForum {
                 LAUNCH_TIMEOUT);
     }
 
-    //Test case 1
+    //OpenTopic
     @Test
-    public void OpenTopic() throws UiObjectNotFoundException {
+    public void Test1() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/topic_list")).getChild(new UiSelector().index(2)).click();
         UiScrollable scroll = new UiScrollable(new UiSelector().resourceId("com.lincanbin.carbonforum:id/post_list"));
         scroll.scrollForward();
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/toolbar")).getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 2
+    //NewTopic
     @Test
-    public void NewTopic() throws UiObjectNotFoundException{
+    public void Test2() throws UiObjectNotFoundException{
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/fab")).click();
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/title")).click();
         mDevice.pressKeyCode(KeyEvent.KEYCODE_T, 1);
@@ -114,9 +114,9 @@ public class TestAndroidCarbonForum {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/new_button")).click();
     }
 
-    //Test case 3
+    //Reply
     @Test
-    public void Reply() throws UiObjectNotFoundException {
+    public void Test3() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/topic_list")).getChild(new UiSelector().index(2)).click();
 
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/fab")).click();
@@ -138,16 +138,16 @@ public class TestAndroidCarbonForum {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/toolbar")).getChild(new UiSelector().index(0)).click();
     }
 
-    //Test case 4
+    //Refresh
     @Test
-    public void Refresh() throws UiObjectNotFoundException {
+    public void Test4() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().text("Refresh")).click();
     }
 
-    //Test case 5
+    //SeeNotification
     @Test
-    public void SeeNotification() throws UiObjectNotFoundException {
+    public void Test5() throws UiObjectNotFoundException {
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/toolbar")).getChild(new UiSelector().index(0)).click();
         mDevice.findObject(new UiSelector().text("Notifications")).click();
         mDevice.findObject(new UiSelector().resourceId("com.lincanbin.carbonforum:id/notifications_list")).swipeLeft(10);
