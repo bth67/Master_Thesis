@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
-import android.support.test.uiautomator.UiCollection;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
@@ -162,5 +161,9 @@ public class TestAmazeFileManager {
     }
 
     //Test case 7
-    
+    @Test
+    public void AddToBookmark() throws UiObjectNotFoundException {
+        mDevice.findObject(new UiSelector().resourceId("com.amaze.filemanager:id/properties")).click();
+        mDevice.findObject(new UiSelector().text("Add to Bookmark")).click();
+    }
 }

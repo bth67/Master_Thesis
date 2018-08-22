@@ -1,6 +1,5 @@
 package com.yuhao.android_test_uiautomator;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
@@ -8,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
-import android.support.test.uiautomator.UiCollection;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
@@ -186,6 +184,23 @@ public class TestCalendarII {
         detePicker.getChild(new UiSelector().index(1)).swipeUp(10);
         detePicker.getChild(new UiSelector().index(2)).swipeDown(15);
         mDevice.findObject(new UiSelector().resourceId("top.soyask.calendarii:id/btn_confirm")).click();
+    }
+
+    //Test case 7
+    @Test
+    public void ChangeTheme() throws UiObjectNotFoundException {
+        mDevice.pressMenu();
+        mDevice.findObject(new UiSelector().textContains("设置")).click();
+        mDevice.findObject(new UiSelector().textContains("主题风格")).click();
+        mDevice.findObject(new UiSelector().textContains("哔哩粉")).click();
+    }
+
+    //Test case 8
+    @Test
+    public void SyncHoliday() throws UiObjectNotFoundException {
+        mDevice.pressMenu();
+        mDevice.findObject(new UiSelector().textContains("设置")).click();
+        mDevice.findObject(new UiSelector().textContains("节假日同步")).click();
     }
 }
 
